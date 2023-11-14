@@ -1,0 +1,103 @@
+﻿@model DatabaseReservation.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuestCount" class="control-label"></label>
+                <input asp-for="GuestCount" class="form-control" />
+                <span asp-validation-for="GuestCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationSource" class="control-label"></label>
+                <select asp-for="ReservationSource" class="form-control" asp-items="ViewBag.ReservationSource">
+                    <option value="Email">Email</option>
+                    <option value="Online">Online</option>
+                    <option value="InPerson">In Person</option>
+                    <option value="App">App</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateTime" class="control-label"></label>
+                <input asp-for="StartDateTime" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" />
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SittingId" class="control-label"></label>
+                <select class="form-control" disabled>
+                    <option id="VisibleSittingOP">@ViewData["desc"]</option>
+                </select>
+                <input asp-for="SittingId" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestId" class="control-label"></label>
+                <select asp-for="GuestId" class="form-control" asp-items="ViewBag.GuestId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResStatus" class="control-label"></label>
+                <select asp-for="ResStatus" class="form-control">
+                    <option value="Pending">Pending</option>
+                    <option value="Seated">Cancelled</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <span asp-validation-for="ResStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('StartDateTime').addEventListener("input", handleValueChange, false);
+        function handleValueChange(e) {
+            var sittingList = @Html.Raw(Json.Serialize(ViewData["SittingsList"]));
+            var newdatevar = new Date(e.target.value)
+            function compare2dates() {
+                for (let i = 0; i < sittingList.length; i++) {
+                    var sitting = sittingList[i];
+                    var start = new Date(sitting.startDateTime);
+                    var end = new Date(sitting.endDateTime);
+                    if (start < newdatevar && end > newdatevar) {
+                        return sitting;
+                    }
+                }
+                this.descrption = "Invalid reservation date/time";
+                return "Invalid reservation date/time";
+            }
+            var x = compare2dates();
+            document.getElementById('SittingId').value = x.sittingId;
+            if (x.description != null)
+            document.getElementById('VisibleSittingOP').innerHTML = x.description;
+            else
+            document.getElementById('VisibleSittingOP').innerHTML = x;
+        }
+    </script>
+}

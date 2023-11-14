@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    string userName = User.Identity.Name;
+}
+<ul class="navbar-nav">
+
+
+      @if (User.IsInRole("manager"))
+      {
+        <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="User" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="User" asp-action="Login">Login</a>
+        </li>
+      } 
+
+    @if (string.IsNullOrEmpty(userName))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+
+        </li>
+    }
+
+    @if (!string.IsNullOrEmpty(userName))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="User" asp-action="ChangePassword">Forgot Password</a>
+        </li>
+    }
+
+@* } *@
+
+</ul>

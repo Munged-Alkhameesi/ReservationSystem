@@ -1,0 +1,48 @@
+﻿@model DatabaseReservation.Models.Guest
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Guest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuestFirstName" class="control-label"></label>
+                <input asp-for="GuestFirstName" class="form-control" />
+                <span asp-validation-for="GuestFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestLastName" class="control-label"></label>
+                <input asp-for="GuestLastName" class="form-control" />
+                <span asp-validation-for="GuestLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestEmail" class="control-label"></label>
+                <input asp-for="GuestEmail" class="form-control" />
+                <span asp-validation-for="GuestEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestPhoneNumber" class="control-label"></label>
+                <input asp-for="GuestPhoneNumber" class="form-control" />
+                <span asp-validation-for="GuestPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
