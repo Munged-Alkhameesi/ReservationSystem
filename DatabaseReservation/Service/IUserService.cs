@@ -10,7 +10,6 @@ namespace DatabaseReservation.Service
 
         Task<Status> LoginAsync(Login model);
         Task<Status> LogoutAsync();
-        public IEnumerable<ApplicationUser> GetAllUsers();
 
     }
 }

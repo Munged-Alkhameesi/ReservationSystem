@@ -20,11 +20,6 @@ namespace DatabaseReservation.Service
             this.signInManager = signInManager;
 
         }
-        public IEnumerable<ApplicationUser> GetAllUsers()
-        {
-            return userManager.Users;
-        }
-
         public async Task<Status> LoginAsync(Login model)
         {
             var status = new Status();
