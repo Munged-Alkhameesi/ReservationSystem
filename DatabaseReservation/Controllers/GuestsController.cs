@@ -59,10 +59,15 @@ namespace DatabaseReservation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GuestId,GuestFirstName,GuestLastName,GuestEmail,GuestPhoneNumber")] Guest guest)
         {
+            // if guest exists then no need to recreate it
+            if(_context.Guests.Any(g => g.GuestEmail == guest.GuestEmail))
+                return RedirectToAction("Create", "Reservations", new { id = guest.GuestId });
+            
             if (ModelState.IsValid)
             {
                 _context.Add(guest);
                 await _context.SaveChangesAsync();
+                // go to reservation and pass the guest id as well
                 return RedirectToAction("Create", "Reservations", new { id = guest.GuestId });
             }
             return View(guest);

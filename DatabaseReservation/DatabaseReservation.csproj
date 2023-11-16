@@ -25,9 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\2306.w062.n005.179B.p15.179.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="wwwroot\Images\2306.w062.n005.179B.p15.179.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -10,6 +10,8 @@ namespace DatabaseReservation.Service
 
         Task<Status> LoginAsync(Login model);
         Task<Status> LogoutAsync();
+        Task<Status> ChangePasswordAsync(ChangePassword model, string username);
+
 
     }
 }

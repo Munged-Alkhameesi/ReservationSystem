@@ -17,6 +17,7 @@ namespace DatabaseReservation
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddTransient<IFileUpload, FileUpload>();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ReservationDbContext>().AddDefaultTokenProviders();
             builder.Services.AddScoped<IUserService, UserService>();
             

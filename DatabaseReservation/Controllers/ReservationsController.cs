@@ -78,7 +78,7 @@ namespace DatabaseReservation.Controllers
                 }
                 else
                 {
-                    Guest guest = new Guest
+                    Guest guest = new()
                     {
                         GuestEmail = user.Email,
                         GuestFirstName = user.FirstName,

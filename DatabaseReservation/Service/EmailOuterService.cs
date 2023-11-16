@@ -26,7 +26,7 @@ namespace DatabaseReservation.Service
         /// </summary>
         public class EmailInnerService
         {
-            private readonly EmailOuterService obj;
+            private readonly EmailOuterService? obj;
             public EmailInnerService(){}
 
             public EmailInnerService(EmailOuterService outer)
@@ -42,17 +42,22 @@ namespace DatabaseReservation.Service
             /// <param name="password"></param>
             /// <returns></returns>
             public bool SendEmailConfirmation(string emailTo, String Lname, string userName, string password)
-
             {
                
                 var email = new MimeMessage();
+
+                // Adding the email to send from
                 email.From.Add(MailboxAddress.Parse("reservationsystem164@gmail.com"));
+                
                 email.To.Add(MailboxAddress.Parse(emailTo));
                 email.Subject = "Registration Confirmation";
+               
+                // the email message/body
                 email.Body = new TextPart(TextFormat.Plain) { Text = "Dear" + Lname + ",\n" + "You have successfully register to the Reservation System. \n Your user name: " + userName + " and password: " + password + "\n Kind Regards\n Reservation Service Team" };
-                // send email
+                
+                
+                // send email using the mailkit smtp service
                 using var smtp = new MailKit.Net.Smtp.SmtpClient();
-
                 smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
                 smtp.Authenticate("reservationsystem164@gmail.com", "qrxu ejmq xtne ayuk");
 

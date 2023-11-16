@@ -55,12 +55,14 @@
                 <label asp-for="PasswordConfirm">Confirm Password</label>
                 <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <select asp-for="Role" class="form-control">
-                    <option value="manager">manager</option>
-                    <option value="staff">staff</option>
+            <div class="form-floating mb-3">
+                <input type="file" name="formFile" id="formFile" />
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Role" class="form-select">
                     <option value="member">member</option>
+                    <option value="staff">staff</option>
+                    <option value="manager">manager</option>
                 </select>
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>

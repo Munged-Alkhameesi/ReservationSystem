@@ -21,30 +21,21 @@
                     <label asp-for="UserName" class="form-label">User Name</label>
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
-
                 <div class="form-floating mb-3">
                     <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
                     <label asp-for="Password" class="form-label">Password</label>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
-
                 <div>
                     <p>
                         <a id="forgot-password" asp-controller="User" asp-action="">Forgot your password?</a>
                     </p>
-
                     <p>
                         <a asp-controller="User" asp-action="Register">Register as a new user</a>
                     </p>
-
-                    <p>
-                        <a id="resend-confirmation" asp-controller="User" asp-action="">Resend email confirmation</a>
-                    </p>
-
                 </div>
             </form>
         </section>

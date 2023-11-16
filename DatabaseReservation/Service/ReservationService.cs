@@ -6,7 +6,7 @@ namespace DatabaseReservation.Service
     public class ReservationService: IReservationService
     {
         private readonly ReservationDbContext _db;
-        private IReservationService? IReservation;
+        private readonly IReservationService? IReservation;
         public ReservationService(ReservationDbContext Db)
         {
             _db = Db;

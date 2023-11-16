@@ -1,19 +1,12 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using DatabaseReservation.Data;
+@using Microsoft.AspNetCore.Identity
 @{
+    @inject SignInManager<ApplicationUser> SignInManager
+    @inject UserManager<ApplicationUser> UserManager
     string userName = User.Identity.Name;
 }
+
 <ul class="navbar-nav">
-
-
-      @if (User.IsInRole("manager"))
-      {
-        <li class="nav-item">
-                <a class="nav-link text-light" asp-controller="User" asp-action="Register">Register</a>
-        </li>
-        <li class="nav-item">
-                <a class="nav-link text-light" asp-controller="User" asp-action="Login">Login</a>
-        </li>
-      } 
 
     @if (string.IsNullOrEmpty(userName))
     {
@@ -26,12 +19,19 @@
 
     @if (!string.IsNullOrEmpty(userName))
     {
+        var user = await UserManager.FindByNameAsync(userName);
+        <li class="nav-item" href="/Users/Edit/@user.Id">
+            <a href="@Url.Action("Edit","User",new{id=@user.Id})">
+                <img src="~/Images/@user.ProfilePic" title="ProfilePic" width="30" height="30"/>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-controller="User" asp-action="ChangePassword">Forgot Password</a>
+            <a class="nav-link" asp-controller="User" asp-action="ChangePassword">Change Password</a>
         </li>
+
     }
 
 @* } *@

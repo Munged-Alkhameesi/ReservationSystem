@@ -2,6 +2,7 @@
 using DatabaseReservation.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace DatabaseReservation.Service
@@ -18,7 +19,6 @@ namespace DatabaseReservation.Service
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.signInManager = signInManager;
-
         }
         public async Task<Status> LoginAsync(Login model)
         {
@@ -85,7 +85,7 @@ namespace DatabaseReservation.Service
                 status.Message = "User already exist";
                 return status;
             }
-            ApplicationUser user = new ApplicationUser()
+            ApplicationUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -95,7 +95,9 @@ namespace DatabaseReservation.Service
                 PhoneNumber = model.PhoneNumber,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
+                ProfilePic = model.ProfilePic
             };
+
             var result = await userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
@@ -103,7 +105,7 @@ namespace DatabaseReservation.Service
                 status.Message = "User creation failed";
                 return status;
             }
-
+            
             if (!await roleManager.RoleExistsAsync(model.Role))
                 await roleManager.CreateAsync(new IdentityRole(model.Role));
 
@@ -117,5 +119,32 @@ namespace DatabaseReservation.Service
             status.Message = "You have registered successfully";
             return status;
         }
+
+        public async Task<Status> ChangePasswordAsync(ChangePassword model, string username)
+        {
+            var status = new Status();
+
+            var user = await userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                status.Message = "User does not exist";
+                status.StatusCode = 0;
+                return status;
+            }
+            var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                status.Message = "Password has updated successfully";
+                status.StatusCode = 1;
+            }
+            else
+            {
+                status.Message = "Some error occcured";
+                status.StatusCode = 0;
+            }
+            return status;
+
+        }
     }
 }
+

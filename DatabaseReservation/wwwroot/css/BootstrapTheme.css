@@ -24,7 +24,11 @@
     text-align: center;
     color: #fff;
 }
-
+#profile-image {
+    width: 32px; /* Adjust the width as needed */
+    height: 32px; /* Adjust the height as needed */
+    border-radius: 50%; /* Optional: create a circular shape for the image */
+}
 h1, h2 {
     color: #333;
 }

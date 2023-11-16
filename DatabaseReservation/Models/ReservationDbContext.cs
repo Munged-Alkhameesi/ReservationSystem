@@ -40,7 +40,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(builder);
         
-        // seeding roles
+        // Seeding roles
         builder.Entity<IdentityRole>().HasData(
             new IdentityRole
             {
@@ -63,6 +63,8 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
 
         // seeding sittings for 3months
         SeedSittings(builder);
+        
+        // Tables seeding
         builder.Entity<Area>().HasData(
           new Area
           {
@@ -83,6 +85,11 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
 
         // seeding tables, 10 in each area
         SeedAllTables(builder);
+        SeedingUsers(builder);
+
+    }
+    public static void SeedingUsers(ModelBuilder builder)
+    {
 
         // seeding users, 1 manager, 1 staff, 1 memeber
         var hasher = new PasswordHasher<ApplicationUser>();
@@ -99,7 +106,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
             PhoneNumberConfirmed = true,
         };
         manager.PasswordHash = hasher.HashPassword(manager, "manager");
-        
+
         var staff = new ApplicationUser()
         {
             Email = "staff@beanscene.com",
@@ -126,12 +133,16 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
         };
         member.PasswordHash = hasher.HashPassword(member, "member");
         
+        builder.Entity<ApplicationUser>().HasData(
+     manager, staff, member
+      );
+
         builder.Entity<IdentityUserRole<string>>().HasData(
              new IdentityUserRole<string>
              {
                  RoleId = "1",
                  UserId = manager.Id
-             }, 
+             },
              new IdentityUserRole<string>
              {
                  RoleId = "2",
@@ -144,10 +155,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
               }
          );
 
-        builder.Entity<ApplicationUser>().HasData(
-       manager,staff, member
-        );
-
+      
     }
     // Seed method for the Sitting table
     public static void SeedSittings(ModelBuilder modelBuilder)

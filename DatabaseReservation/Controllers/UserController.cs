@@ -4,29 +4,139 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using DatabaseReservation.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DatabaseReservation.Controllers
 {
     public class UserController : Controller
     {
+        // services to be used by this controller class
         private readonly IUserService _authService;
         private readonly ReservationDbContext _context;
-
-        public UserController(IUserService authService,ReservationDbContext context)
+        private readonly IFileUpload _fileUploadService;
+        private IWebHostEnvironment _env;
+        public UserController(IUserService authService, ReservationDbContext context, IFileUpload fileUploadService, IWebHostEnvironment environment)
         {
             _authService = authService;
             _context = context;
+            _fileUploadService = fileUploadService; 
+            _env = environment;
         }
         public IActionResult Register()
         {
             return View();
         }
+        [Authorize(Roles ="manager")]
         public IActionResult Index()
         {
+            // return all users if found
             return _context.Users != null ?
                         View(_context.Users) :
                         Problem("Entity set 'ReservationDbContext.users'  is null.");
         }
+        
+        public IActionResult Login()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Login method for the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Login(Login model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var result = await _authService.LoginAsync(model);
+            if (result.StatusCode == 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["msg"] = result.Message;
+                return RedirectToAction(nameof(Login));
+            }
+        }
+        /// <summary>
+        /// Register method for the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Register(Register model, IFormFile formFile)
+        {
+            Debug.WriteLine(ModelState.IsValid);
+            if (!ModelState.IsValid) 
+            {
+                return View(model); 
+            }
+            model.Role = "member";
+            try
+            {
+                string x = await _fileUploadService.UploadFile(formFile, _env);
+                if (!x.IsNullOrEmpty())
+                {
+                    model.ProfilePic = x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+
+            }
+            var result = await _authService.RegisterAsync(model);
+
+            if (result.StatusCode != 1)
+                return View(model);
+
+            // send an email confirmation to the user's email
+            EmailOuterService Outer = new();
+            var confirmation = Outer.Inner.SendEmailConfirmation(model.Email, model.LastName, model.UserName, model.Password);
+
+            Debug.WriteLine(confirmation);
+            return RedirectToAction(nameof(Login));
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Create more users. only admin/manager can
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="role"></param>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Create(Register model, string role, FormFile formFile)
+        {
+            if (!ModelState.IsValid) { return View(model); }
+            
+            model.Role = role;
+            var result = await _authService.RegisterAsync(model);
+           
+            TempData["msg"] = result.Message;
+            
+            if (result.StatusCode != 1)
+                return View(model);
+            return RedirectToAction(nameof(Login));
+        }
+        public async Task<IActionResult> Logout()
+        {
+            var result = await this._authService.LogoutAsync();
+
+            TempData["msg"] = result.Message;
+
+            return RedirectToAction(nameof(Login));
+
+        }
+        [Authorize(Roles ="manager")]
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(string? id)
         {
@@ -46,7 +156,7 @@ namespace DatabaseReservation.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,FirstName,LastName,Email,PhoneNumber")] ApplicationUser user)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,FirstName,LastName,Email,PhoneNumber")] ApplicationUser user, IFormFile formFile)
         {
             if (id != user.Id)
             {
@@ -58,11 +168,28 @@ namespace DatabaseReservation.Controllers
             oldUser.LastName = user.LastName;
             oldUser.PhoneNumber = user.PhoneNumber;
             oldUser.Email = user.Email;
+            if (formFile != null)
+            {
+                try
+                {
+                    string x = await _fileUploadService.UploadFile(formFile, _env);
+                    if (!x.IsNullOrEmpty())
+                    {
+                        oldUser.ProfilePic = x;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    return View(user);
+
+                }
+            }
             if (ModelState.IsValid)
             {
                 try
                 {
-                    
+
                     _context.Users.Update(oldUser);
                     await _context.SaveChangesAsync();
                 }
@@ -81,71 +208,7 @@ namespace DatabaseReservation.Controllers
             }
             return View(user);
         }
-
-        public IActionResult Login()
-        {
-           return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(Login model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
-            var result = await _authService.LoginAsync(model);
-            if (result.StatusCode == 1)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                TempData["msg"] = result.Message;
-                return RedirectToAction(nameof(Login));
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register(Register model)
-        {
-            Debug.WriteLine(ModelState.IsValid);
-            if (!ModelState.IsValid) { return View(model); }
-            model.Role = "member";
-            var result = await _authService.RegisterAsync(model);
-            
-            if (result.StatusCode != 1)
-                return View(model);
-
-            EmailOuterService Outer = new EmailOuterService();
-            var confirmation = Outer.Inner.SendEmailConfirmation(model.Email, model.LastName, model.UserName, model.Password);
-
-            Debug.WriteLine(confirmation);
-            return RedirectToAction(nameof(Login));
-        }
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(Register model, string role)
-        {
-            if (!ModelState.IsValid) { return View(model); }
-            model.Role = "staff";
-            var result = await _authService.RegisterAsync(model);
-            TempData["msg"] = result.Message;
-            if (result.StatusCode != 1)
-                return View(model);
-            return RedirectToAction(nameof(Login));
-        }
-        public async Task<IActionResult> Logout()
-        {
-            var result = await this._authService.LogoutAsync();
-
-            TempData["msg"] = result.Message;
-
-            return RedirectToAction(nameof(Login));
-
-        }
-
+        [Authorize(Roles = "manager")]
         // GET: User/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
@@ -160,11 +223,12 @@ namespace DatabaseReservation.Controllers
             {
                 return NotFound();
             }
-            else if(user.UserName == "manager")
+            else if (user.UserName == "manager")
             {
+                // no editing the seeded manager
                 return Problem("No one is allowed to delete the manager!");
             }
-            else if(user.UserName == User.Identity.Name)
+            else if (user.UserName == User.Identity.Name)
             {
                 return Problem("Cannot Delete the current logged in user!");
             }
@@ -194,5 +258,29 @@ namespace DatabaseReservation.Controllers
             return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+        //Change Password
+
+        [HttpGet]
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("Update")]
+        public async Task<IActionResult> ChangePassword(ChangePassword model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var result = await _authService.ChangePasswordAsync(model, User.Identity.Name);
+            TempData["msg"] = result.Message;
+            if (result.StatusCode != 1)
+                return View(model);
+
+            return RedirectToAction(nameof(Login));
+
+        }
     }
+
 }

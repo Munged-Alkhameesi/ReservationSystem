@@ -72,6 +72,10 @@ namespace DatabaseReservation.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePic")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -97,52 +101,55 @@ namespace DatabaseReservation.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8b11af29-826a-47d2-b0ae-706499efdc9a",
+                            Id = "e36d0332-75c8-4872-8e02-6a45fe9a1fe9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f2e72c7e-5838-4972-a630-bcf0ef2bad7b",
+                            ConcurrencyStamp = "59189f1d-0ba8-472b-9f65-efd70c72864f",
                             Email = "manager@beanscene.com",
                             EmailConfirmed = true,
                             FirstName = "John",
                             LastName = "Smith",
                             LockoutEnabled = false,
                             NormalizedUserName = "MANAGER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO86FH+zBo9CprdQMtIGQnV6jja4CQ5rZeugi3tZY7PE50Jnd/B5YnZCc/vPO+13Ew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGJrLQl2jISiF1K9xq+BLmn5xDC8Mk3TozqkPLXqPSL+bs9487/ui2TeQJIInRXZfA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "ebd19bec-3309-4b41-b49e-2ce7abfc55f6",
+                            ProfilePic = "Default.png",
+                            SecurityStamp = "0f6a0970-2118-48c9-a5e9-5fcc98448925",
                             TwoFactorEnabled = false,
                             UserName = "Manager"
                         },
                         new
                         {
-                            Id = "181413fd-7aa8-4ed4-98f4-a121162b3019",
+                            Id = "1b673e5b-5350-4715-b84d-e585fc6c6a49",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b90ed227-7d71-44f7-872e-ffe99420512f",
+                            ConcurrencyStamp = "a4bb43da-e631-428e-a3e9-e024f4a299c0",
                             Email = "staff@beanscene.com",
                             EmailConfirmed = true,
                             FirstName = "Adam",
                             LastName = "Smith",
                             LockoutEnabled = false,
                             NormalizedUserName = "STAFF",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFrH0BD0IhBRUvhSInqlZ4/uqRzn8Iy9YytyEVy2CG7mTEBDDT2TJPrICJvDK/ax1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMZ7QicBS7gCQyn47iSEtIZtT4U4tMXCF/CSFV0f/6B3PZx2uhvJAxER8XKzk2XK6w==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "9ea22007-6574-43cd-9373-6803358c3854",
+                            ProfilePic = "Default.png",
+                            SecurityStamp = "b676128b-4dc1-49ba-9654-02ea448ba13e",
                             TwoFactorEnabled = false,
                             UserName = "Staff"
                         },
                         new
                         {
-                            Id = "7f284a9c-5141-4f86-ae1c-0be5d6bd226b",
+                            Id = "9d5ed261-8d8d-48a1-ac22-b12db933e21f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27234bd2-1721-47e4-95f7-e4a23153f486",
+                            ConcurrencyStamp = "d64ba525-014d-4124-af91-f487e4010603",
                             Email = "member@beanscene.com",
                             EmailConfirmed = true,
                             FirstName = "Jason",
                             LastName = "Smith",
                             LockoutEnabled = false,
                             NormalizedUserName = "MEMBER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDc1HEdmjy+orojJbYeDoCAVjrTPm6wk/oostWrcAAdtc5b2G9izz3AvrZyi4KMTaQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP4mlyd9nG9KaCz3bc+zAiSL/q5VC6TMEZIHtONZX79fHCF3G2nuDzlB7wPByzC77A==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "4c23f2cd-3188-46a0-b3f8-39dd10f81f59",
+                            ProfilePic = "Default.png",
+                            SecurityStamp = "869e2437-e2c4-44f8-b0b4-1959080471cd",
                             TwoFactorEnabled = false,
                             UserName = "Member"
                         });
@@ -548,85 +555,13 @@ namespace DatabaseReservation.Migrations
                         {
                             SittingId = 1,
                             Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 13, 11, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "breakfast",
-                            StartDateTime = new DateTime(2023, 11, 13, 7, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 2,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 13, 16, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "lunch",
-                            StartDateTime = new DateTime(2023, 11, 13, 12, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 3,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 13, 21, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "dinner",
-                            StartDateTime = new DateTime(2023, 11, 13, 17, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 4,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 14, 11, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "breakfast",
-                            StartDateTime = new DateTime(2023, 11, 14, 7, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 5,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 14, 16, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "lunch",
-                            StartDateTime = new DateTime(2023, 11, 14, 12, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 6,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 14, 21, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "dinner",
-                            StartDateTime = new DateTime(2023, 11, 14, 17, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 7,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 15, 11, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "breakfast",
-                            StartDateTime = new DateTime(2023, 11, 15, 7, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 8,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 15, 16, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "lunch",
-                            StartDateTime = new DateTime(2023, 11, 15, 12, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 9,
-                            Capacity = 40,
-                            EndDateTime = new DateTime(2023, 11, 15, 21, 59, 0, 0, DateTimeKind.Local),
-                            SittingType = "dinner",
-                            StartDateTime = new DateTime(2023, 11, 15, 17, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            SittingId = 10,
-                            Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 16, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
                             StartDateTime = new DateTime(2023, 11, 16, 7, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
-                            SittingId = 11,
+                            SittingId = 2,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 16, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -634,7 +569,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 12,
+                            SittingId = 3,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 16, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -642,7 +577,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 13,
+                            SittingId = 4,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 17, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -650,7 +585,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 14,
+                            SittingId = 5,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 17, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -658,7 +593,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 15,
+                            SittingId = 6,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 17, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -666,7 +601,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 16,
+                            SittingId = 7,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 18, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -674,7 +609,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 17,
+                            SittingId = 8,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 18, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -682,7 +617,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 18,
+                            SittingId = 9,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 18, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -690,7 +625,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 19,
+                            SittingId = 10,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 19, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -698,7 +633,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 20,
+                            SittingId = 11,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 19, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -706,7 +641,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 21,
+                            SittingId = 12,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 19, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -714,7 +649,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 22,
+                            SittingId = 13,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 20, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -722,7 +657,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 23,
+                            SittingId = 14,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 20, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -730,7 +665,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 24,
+                            SittingId = 15,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 20, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -738,7 +673,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 25,
+                            SittingId = 16,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 21, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -746,7 +681,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 26,
+                            SittingId = 17,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 21, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -754,7 +689,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 27,
+                            SittingId = 18,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 21, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -762,7 +697,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 28,
+                            SittingId = 19,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 22, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -770,7 +705,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 29,
+                            SittingId = 20,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 22, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -778,7 +713,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 30,
+                            SittingId = 21,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 22, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -786,7 +721,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 31,
+                            SittingId = 22,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 23, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -794,7 +729,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 32,
+                            SittingId = 23,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 23, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -802,7 +737,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 33,
+                            SittingId = 24,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 23, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -810,7 +745,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 34,
+                            SittingId = 25,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 24, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -818,7 +753,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 35,
+                            SittingId = 26,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 24, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -826,7 +761,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 36,
+                            SittingId = 27,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 24, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -834,7 +769,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 37,
+                            SittingId = 28,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 25, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -842,7 +777,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 38,
+                            SittingId = 29,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 25, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -850,7 +785,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 39,
+                            SittingId = 30,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 25, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -858,7 +793,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 40,
+                            SittingId = 31,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 26, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -866,7 +801,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 41,
+                            SittingId = 32,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 26, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -874,7 +809,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 42,
+                            SittingId = 33,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 26, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -882,7 +817,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 43,
+                            SittingId = 34,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 27, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -890,7 +825,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 44,
+                            SittingId = 35,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 27, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -898,7 +833,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 45,
+                            SittingId = 36,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 27, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -906,7 +841,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 46,
+                            SittingId = 37,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 28, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -914,7 +849,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 47,
+                            SittingId = 38,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 28, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -922,7 +857,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 48,
+                            SittingId = 39,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 28, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -930,7 +865,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 49,
+                            SittingId = 40,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 29, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -938,7 +873,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 50,
+                            SittingId = 41,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 29, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -946,7 +881,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 51,
+                            SittingId = 42,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 29, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -954,7 +889,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 52,
+                            SittingId = 43,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 30, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -962,7 +897,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 53,
+                            SittingId = 44,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 30, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -970,7 +905,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 54,
+                            SittingId = 45,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 11, 30, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -978,7 +913,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 55,
+                            SittingId = 46,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 1, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -986,7 +921,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 56,
+                            SittingId = 47,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 1, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -994,7 +929,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 57,
+                            SittingId = 48,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 1, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1002,7 +937,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 58,
+                            SittingId = 49,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 2, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1010,7 +945,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 59,
+                            SittingId = 50,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 2, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1018,7 +953,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 60,
+                            SittingId = 51,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 2, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1026,7 +961,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 61,
+                            SittingId = 52,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 3, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1034,7 +969,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 62,
+                            SittingId = 53,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 3, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1042,7 +977,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 63,
+                            SittingId = 54,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 3, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1050,7 +985,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 64,
+                            SittingId = 55,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 4, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1058,7 +993,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 65,
+                            SittingId = 56,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 4, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1066,7 +1001,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 66,
+                            SittingId = 57,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 4, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1074,7 +1009,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 67,
+                            SittingId = 58,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 5, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1082,7 +1017,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 68,
+                            SittingId = 59,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 5, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1090,7 +1025,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 69,
+                            SittingId = 60,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 5, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1098,7 +1033,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 70,
+                            SittingId = 61,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 6, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1106,7 +1041,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 71,
+                            SittingId = 62,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 6, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1114,7 +1049,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 72,
+                            SittingId = 63,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 6, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1122,7 +1057,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 73,
+                            SittingId = 64,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 7, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1130,7 +1065,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 74,
+                            SittingId = 65,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 7, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1138,7 +1073,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 75,
+                            SittingId = 66,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 7, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1146,7 +1081,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 76,
+                            SittingId = 67,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 8, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1154,7 +1089,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 77,
+                            SittingId = 68,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 8, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1162,7 +1097,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 78,
+                            SittingId = 69,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 8, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1170,7 +1105,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 79,
+                            SittingId = 70,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 9, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1178,7 +1113,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 80,
+                            SittingId = 71,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 9, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1186,7 +1121,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 81,
+                            SittingId = 72,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 9, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1194,7 +1129,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 82,
+                            SittingId = 73,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 10, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1202,7 +1137,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 83,
+                            SittingId = 74,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 10, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1210,7 +1145,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 84,
+                            SittingId = 75,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 10, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1218,7 +1153,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 85,
+                            SittingId = 76,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 11, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1226,7 +1161,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 86,
+                            SittingId = 77,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 11, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1234,7 +1169,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 87,
+                            SittingId = 78,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 11, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1242,7 +1177,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 88,
+                            SittingId = 79,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 12, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1250,7 +1185,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 89,
+                            SittingId = 80,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 12, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1258,7 +1193,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 90,
+                            SittingId = 81,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 12, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1266,7 +1201,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 91,
+                            SittingId = 82,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 13, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1274,7 +1209,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 92,
+                            SittingId = 83,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 13, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1282,7 +1217,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 93,
+                            SittingId = 84,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 13, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1290,7 +1225,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 94,
+                            SittingId = 85,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 14, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1298,7 +1233,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 95,
+                            SittingId = 86,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 14, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1306,7 +1241,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 96,
+                            SittingId = 87,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 14, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1314,7 +1249,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 97,
+                            SittingId = 88,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 15, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1322,7 +1257,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 98,
+                            SittingId = 89,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 15, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1330,7 +1265,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 99,
+                            SittingId = 90,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 15, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1338,7 +1273,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 100,
+                            SittingId = 91,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 16, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1346,7 +1281,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 101,
+                            SittingId = 92,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 16, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1354,7 +1289,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 102,
+                            SittingId = 93,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 16, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1362,7 +1297,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 103,
+                            SittingId = 94,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 17, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1370,7 +1305,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 104,
+                            SittingId = 95,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 17, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1378,7 +1313,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 105,
+                            SittingId = 96,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 17, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1386,7 +1321,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 106,
+                            SittingId = 97,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 18, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1394,7 +1329,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 107,
+                            SittingId = 98,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 18, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1402,7 +1337,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 108,
+                            SittingId = 99,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 18, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1410,7 +1345,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 109,
+                            SittingId = 100,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 19, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1418,7 +1353,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 110,
+                            SittingId = 101,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 19, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1426,7 +1361,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 111,
+                            SittingId = 102,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 19, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1434,7 +1369,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 112,
+                            SittingId = 103,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 20, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1442,7 +1377,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 113,
+                            SittingId = 104,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 20, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1450,7 +1385,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 114,
+                            SittingId = 105,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 20, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1458,7 +1393,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 115,
+                            SittingId = 106,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 21, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1466,7 +1401,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 116,
+                            SittingId = 107,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 21, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1474,7 +1409,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 117,
+                            SittingId = 108,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 21, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1482,7 +1417,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 118,
+                            SittingId = 109,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 22, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1490,7 +1425,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 119,
+                            SittingId = 110,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 22, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1498,7 +1433,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 120,
+                            SittingId = 111,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 22, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1506,7 +1441,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 121,
+                            SittingId = 112,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 23, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1514,7 +1449,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 122,
+                            SittingId = 113,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 23, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1522,7 +1457,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 123,
+                            SittingId = 114,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 23, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1530,7 +1465,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 124,
+                            SittingId = 115,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 24, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1538,7 +1473,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 125,
+                            SittingId = 116,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 24, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1546,7 +1481,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 126,
+                            SittingId = 117,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 24, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1554,7 +1489,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 127,
+                            SittingId = 118,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 25, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1562,7 +1497,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 128,
+                            SittingId = 119,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 25, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1570,7 +1505,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 129,
+                            SittingId = 120,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 25, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1578,7 +1513,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 130,
+                            SittingId = 121,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 26, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1586,7 +1521,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 131,
+                            SittingId = 122,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 26, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1594,7 +1529,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 132,
+                            SittingId = 123,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 26, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1602,7 +1537,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 133,
+                            SittingId = 124,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 27, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1610,7 +1545,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 134,
+                            SittingId = 125,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 27, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1618,7 +1553,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 135,
+                            SittingId = 126,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 27, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1626,7 +1561,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 136,
+                            SittingId = 127,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 28, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1634,7 +1569,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 137,
+                            SittingId = 128,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 28, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1642,7 +1577,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 138,
+                            SittingId = 129,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 28, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1650,7 +1585,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 139,
+                            SittingId = 130,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 29, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1658,7 +1593,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 140,
+                            SittingId = 131,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 29, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1666,7 +1601,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 141,
+                            SittingId = 132,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 29, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1674,7 +1609,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 142,
+                            SittingId = 133,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 30, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1682,7 +1617,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 143,
+                            SittingId = 134,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 30, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1690,7 +1625,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 144,
+                            SittingId = 135,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 30, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1698,7 +1633,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 145,
+                            SittingId = 136,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 31, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1706,7 +1641,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 146,
+                            SittingId = 137,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 31, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1714,7 +1649,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 147,
+                            SittingId = 138,
                             Capacity = 40,
                             EndDateTime = new DateTime(2023, 12, 31, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1722,7 +1657,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 148,
+                            SittingId = 139,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 1, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1730,7 +1665,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 149,
+                            SittingId = 140,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 1, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1738,7 +1673,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 150,
+                            SittingId = 141,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 1, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1746,7 +1681,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 151,
+                            SittingId = 142,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 2, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1754,7 +1689,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 152,
+                            SittingId = 143,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 2, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1762,7 +1697,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 153,
+                            SittingId = 144,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 2, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1770,7 +1705,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 154,
+                            SittingId = 145,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 3, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1778,7 +1713,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 155,
+                            SittingId = 146,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 3, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1786,7 +1721,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 156,
+                            SittingId = 147,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 3, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1794,7 +1729,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 157,
+                            SittingId = 148,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 4, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1802,7 +1737,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 158,
+                            SittingId = 149,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 4, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1810,7 +1745,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 159,
+                            SittingId = 150,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 4, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1818,7 +1753,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 160,
+                            SittingId = 151,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 5, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1826,7 +1761,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 161,
+                            SittingId = 152,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 5, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1834,7 +1769,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 162,
+                            SittingId = 153,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 5, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1842,7 +1777,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 163,
+                            SittingId = 154,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 6, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1850,7 +1785,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 164,
+                            SittingId = 155,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 6, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1858,7 +1793,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 165,
+                            SittingId = 156,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 6, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1866,7 +1801,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 166,
+                            SittingId = 157,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 7, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1874,7 +1809,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 167,
+                            SittingId = 158,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 7, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1882,7 +1817,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 168,
+                            SittingId = 159,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 7, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1890,7 +1825,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 169,
+                            SittingId = 160,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 8, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1898,7 +1833,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 170,
+                            SittingId = 161,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 8, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1906,7 +1841,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 171,
+                            SittingId = 162,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 8, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1914,7 +1849,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 172,
+                            SittingId = 163,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 9, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1922,7 +1857,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 173,
+                            SittingId = 164,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 9, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1930,7 +1865,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 174,
+                            SittingId = 165,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 9, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1938,7 +1873,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 175,
+                            SittingId = 166,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 10, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1946,7 +1881,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 176,
+                            SittingId = 167,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 10, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1954,7 +1889,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 177,
+                            SittingId = 168,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 10, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1962,7 +1897,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 178,
+                            SittingId = 169,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 11, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1970,7 +1905,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 179,
+                            SittingId = 170,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 11, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -1978,7 +1913,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 180,
+                            SittingId = 171,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 11, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -1986,7 +1921,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 181,
+                            SittingId = 172,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 12, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -1994,7 +1929,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 182,
+                            SittingId = 173,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 12, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2002,7 +1937,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 183,
+                            SittingId = 174,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 12, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2010,7 +1945,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 184,
+                            SittingId = 175,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 13, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2018,7 +1953,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 185,
+                            SittingId = 176,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 13, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2026,7 +1961,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 186,
+                            SittingId = 177,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 13, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2034,7 +1969,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 187,
+                            SittingId = 178,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 14, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2042,7 +1977,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 188,
+                            SittingId = 179,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 14, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2050,7 +1985,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 189,
+                            SittingId = 180,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 14, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2058,7 +1993,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 190,
+                            SittingId = 181,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 15, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2066,7 +2001,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 191,
+                            SittingId = 182,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 15, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2074,7 +2009,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 192,
+                            SittingId = 183,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 15, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2082,7 +2017,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 193,
+                            SittingId = 184,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 16, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2090,7 +2025,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 194,
+                            SittingId = 185,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 16, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2098,7 +2033,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 195,
+                            SittingId = 186,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 16, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2106,7 +2041,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 196,
+                            SittingId = 187,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 17, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2114,7 +2049,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 197,
+                            SittingId = 188,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 17, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2122,7 +2057,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 198,
+                            SittingId = 189,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 17, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2130,7 +2065,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 199,
+                            SittingId = 190,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 18, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2138,7 +2073,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 200,
+                            SittingId = 191,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 18, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2146,7 +2081,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 201,
+                            SittingId = 192,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 18, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2154,7 +2089,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 202,
+                            SittingId = 193,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 19, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2162,7 +2097,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 203,
+                            SittingId = 194,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 19, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2170,7 +2105,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 204,
+                            SittingId = 195,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 19, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2178,7 +2113,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 205,
+                            SittingId = 196,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 20, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2186,7 +2121,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 206,
+                            SittingId = 197,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 20, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2194,7 +2129,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 207,
+                            SittingId = 198,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 20, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2202,7 +2137,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 208,
+                            SittingId = 199,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 21, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2210,7 +2145,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 209,
+                            SittingId = 200,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 21, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2218,7 +2153,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 210,
+                            SittingId = 201,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 21, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2226,7 +2161,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 211,
+                            SittingId = 202,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 22, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2234,7 +2169,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 212,
+                            SittingId = 203,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 22, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2242,7 +2177,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 213,
+                            SittingId = 204,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 22, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2250,7 +2185,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 214,
+                            SittingId = 205,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 23, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2258,7 +2193,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 215,
+                            SittingId = 206,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 23, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2266,7 +2201,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 216,
+                            SittingId = 207,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 23, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2274,7 +2209,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 217,
+                            SittingId = 208,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 24, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2282,7 +2217,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 218,
+                            SittingId = 209,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 24, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2290,7 +2225,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 219,
+                            SittingId = 210,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 24, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2298,7 +2233,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 220,
+                            SittingId = 211,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 25, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2306,7 +2241,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 221,
+                            SittingId = 212,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 25, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2314,7 +2249,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 222,
+                            SittingId = 213,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 25, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2322,7 +2257,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 223,
+                            SittingId = 214,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 26, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2330,7 +2265,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 224,
+                            SittingId = 215,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 26, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2338,7 +2273,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 225,
+                            SittingId = 216,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 26, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2346,7 +2281,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 226,
+                            SittingId = 217,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 27, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2354,7 +2289,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 227,
+                            SittingId = 218,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 27, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2362,7 +2297,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 228,
+                            SittingId = 219,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 27, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2370,7 +2305,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 229,
+                            SittingId = 220,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 28, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2378,7 +2313,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 230,
+                            SittingId = 221,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 28, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2386,7 +2321,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 231,
+                            SittingId = 222,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 28, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2394,7 +2329,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 232,
+                            SittingId = 223,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 29, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2402,7 +2337,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 233,
+                            SittingId = 224,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 29, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2410,7 +2345,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 234,
+                            SittingId = 225,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 29, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2418,7 +2353,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 235,
+                            SittingId = 226,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 30, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2426,7 +2361,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 236,
+                            SittingId = 227,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 30, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2434,7 +2369,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 237,
+                            SittingId = 228,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 30, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2442,7 +2377,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 238,
+                            SittingId = 229,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 31, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2450,7 +2385,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 239,
+                            SittingId = 230,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 31, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2458,7 +2393,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 240,
+                            SittingId = 231,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 1, 31, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2466,7 +2401,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 241,
+                            SittingId = 232,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 1, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2474,7 +2409,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 242,
+                            SittingId = 233,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 1, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2482,7 +2417,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 243,
+                            SittingId = 234,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 1, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2490,7 +2425,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 244,
+                            SittingId = 235,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 2, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2498,7 +2433,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 245,
+                            SittingId = 236,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 2, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2506,7 +2441,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 246,
+                            SittingId = 237,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 2, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2514,7 +2449,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 247,
+                            SittingId = 238,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 3, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2522,7 +2457,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 248,
+                            SittingId = 239,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 3, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2530,7 +2465,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 249,
+                            SittingId = 240,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 3, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2538,7 +2473,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 250,
+                            SittingId = 241,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 4, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2546,7 +2481,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 251,
+                            SittingId = 242,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 4, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2554,7 +2489,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 252,
+                            SittingId = 243,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 4, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2562,7 +2497,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 253,
+                            SittingId = 244,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 5, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2570,7 +2505,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 254,
+                            SittingId = 245,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 5, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2578,7 +2513,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 255,
+                            SittingId = 246,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 5, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2586,7 +2521,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 256,
+                            SittingId = 247,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 6, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2594,7 +2529,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 257,
+                            SittingId = 248,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 6, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2602,7 +2537,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 258,
+                            SittingId = 249,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 6, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2610,7 +2545,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 259,
+                            SittingId = 250,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 7, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2618,7 +2553,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 260,
+                            SittingId = 251,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 7, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2626,7 +2561,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 261,
+                            SittingId = 252,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 7, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2634,7 +2569,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 262,
+                            SittingId = 253,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 8, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2642,7 +2577,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 263,
+                            SittingId = 254,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 8, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2650,7 +2585,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 264,
+                            SittingId = 255,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 8, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2658,7 +2593,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 265,
+                            SittingId = 256,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 9, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2666,7 +2601,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 266,
+                            SittingId = 257,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 9, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2674,7 +2609,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 267,
+                            SittingId = 258,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 9, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2682,7 +2617,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 268,
+                            SittingId = 259,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 10, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2690,7 +2625,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 269,
+                            SittingId = 260,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 10, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2698,7 +2633,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 270,
+                            SittingId = 261,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 10, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2706,7 +2641,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 271,
+                            SittingId = 262,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 11, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2714,7 +2649,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 272,
+                            SittingId = 263,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 11, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2722,7 +2657,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 273,
+                            SittingId = 264,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 11, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2730,7 +2665,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 274,
+                            SittingId = 265,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 12, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2738,7 +2673,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 275,
+                            SittingId = 266,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 12, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2746,7 +2681,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 276,
+                            SittingId = 267,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 12, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
@@ -2754,7 +2689,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 277,
+                            SittingId = 268,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 13, 11, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "breakfast",
@@ -2762,7 +2697,7 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 278,
+                            SittingId = 269,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 13, 16, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "lunch",
@@ -2770,11 +2705,83 @@ namespace DatabaseReservation.Migrations
                         },
                         new
                         {
-                            SittingId = 279,
+                            SittingId = 270,
                             Capacity = 40,
                             EndDateTime = new DateTime(2024, 2, 13, 21, 59, 0, 0, DateTimeKind.Local),
                             SittingType = "dinner",
                             StartDateTime = new DateTime(2024, 2, 13, 17, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 271,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 14, 11, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "breakfast",
+                            StartDateTime = new DateTime(2024, 2, 14, 7, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 272,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 14, 16, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "lunch",
+                            StartDateTime = new DateTime(2024, 2, 14, 12, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 273,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 14, 21, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "dinner",
+                            StartDateTime = new DateTime(2024, 2, 14, 17, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 274,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 15, 11, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "breakfast",
+                            StartDateTime = new DateTime(2024, 2, 15, 7, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 275,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 15, 16, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "lunch",
+                            StartDateTime = new DateTime(2024, 2, 15, 12, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 276,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 15, 21, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "dinner",
+                            StartDateTime = new DateTime(2024, 2, 15, 17, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 277,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 16, 11, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "breakfast",
+                            StartDateTime = new DateTime(2024, 2, 16, 7, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 278,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 16, 16, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "lunch",
+                            StartDateTime = new DateTime(2024, 2, 16, 12, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            SittingId = 279,
+                            Capacity = 40,
+                            EndDateTime = new DateTime(2024, 2, 16, 21, 59, 0, 0, DateTimeKind.Local),
+                            SittingType = "dinner",
+                            StartDateTime = new DateTime(2024, 2, 16, 17, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 
@@ -2914,17 +2921,17 @@ namespace DatabaseReservation.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8b11af29-826a-47d2-b0ae-706499efdc9a",
+                            UserId = "e36d0332-75c8-4872-8e02-6a45fe9a1fe9",
                             RoleId = "1"
                         },
                         new
                         {
-                            UserId = "181413fd-7aa8-4ed4-98f4-a121162b3019",
+                            UserId = "1b673e5b-5350-4715-b84d-e585fc6c6a49",
                             RoleId = "2"
                         },
                         new
                         {
-                            UserId = "7f284a9c-5141-4f86-ae1c-0be5d6bd226b",
+                            UserId = "9d5ed261-8d8d-48a1-ac22-b12db933e21f",
                             RoleId = "3"
                         });
                 });
