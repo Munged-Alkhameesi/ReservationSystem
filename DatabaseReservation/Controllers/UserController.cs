@@ -16,13 +16,11 @@ namespace DatabaseReservation.Controllers
         private readonly IUserService _authService;
         private readonly ReservationDbContext _context;
         private readonly IFileUpload _fileUploadService;
-        private IWebHostEnvironment _env;
-        public UserController(IUserService authService, ReservationDbContext context, IFileUpload fileUploadService, IWebHostEnvironment environment)
+        public UserController(IUserService authService, ReservationDbContext context, IFileUpload fileUploadService)
         {
             _authService = authService;
             _context = context;
             _fileUploadService = fileUploadService; 
-            _env = environment;
         }
         public IActionResult Register()
         {
@@ -69,7 +67,7 @@ namespace DatabaseReservation.Controllers
         /// <param name="formFile"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Register(Register model, IFormFile formFile)
+        public async Task<IActionResult> Register(Register model,[FromForm] IFormFile formFile)
         {
             Debug.WriteLine(ModelState.IsValid);
             if (!ModelState.IsValid) 
@@ -79,10 +77,14 @@ namespace DatabaseReservation.Controllers
             model.Role = "member";
             try
             {
-                string x = await _fileUploadService.UploadFile(formFile, _env);
+                string x = await _fileUploadService.UploadFile(formFile);
                 if (!x.IsNullOrEmpty())
                 {
                     model.ProfilePic = x;
+                }
+                else
+                {
+                    model.ProfilePic="Default.png";
                 }
             }
             catch (Exception ex)
@@ -114,11 +116,29 @@ namespace DatabaseReservation.Controllers
         /// <param name="formFile"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create(Register model, string role, FormFile formFile)
+        public async Task<IActionResult> Create(Register model, string role, IFormFile formFile)
         {
             if (!ModelState.IsValid) { return View(model); }
             
             model.Role = role;
+            if (formFile != null)
+            {
+                try
+                {
+                    // add image to the user table to be used as a profile pic
+                    string x = await _fileUploadService.UploadFile(formFile);
+                    if (!x.IsNullOrEmpty())
+                    {
+                        model.ProfilePic = x;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    return View(model);
+
+                }
+            }
             var result = await _authService.RegisterAsync(model);
            
             TempData["msg"] = result.Message;
@@ -127,6 +147,10 @@ namespace DatabaseReservation.Controllers
                 return View(model);
             return RedirectToAction(nameof(Login));
         }
+        /// <summary>
+        /// logout method 
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Logout()
         {
             var result = await this._authService.LogoutAsync();
@@ -162,6 +186,7 @@ namespace DatabaseReservation.Controllers
             {
                 return NotFound();
             }
+            // find the old user info and change them with new ones
             var oldUser = await _context.Users.FindAsync(user.Id);
             oldUser.UserName = user.UserName;
             oldUser.FirstName = user.FirstName;
@@ -172,7 +197,8 @@ namespace DatabaseReservation.Controllers
             {
                 try
                 {
-                    string x = await _fileUploadService.UploadFile(formFile, _env);
+                    // add image to the user table to be used as a profile pic
+                    string x = await _fileUploadService.UploadFile(formFile);
                     if (!x.IsNullOrEmpty())
                     {
                         oldUser.ProfilePic = x;
@@ -259,9 +285,11 @@ namespace DatabaseReservation.Controllers
         }
 
         //Change Password
-
+        /// <summary>
+        /// change password method in case a user wants a new password
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-
         public IActionResult ChangePassword()
         {
             return View();

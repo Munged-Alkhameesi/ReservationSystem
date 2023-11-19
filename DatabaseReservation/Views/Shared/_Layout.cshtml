@@ -11,9 +11,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-expand" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Reservation System</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/beanscene.png" title="Logo" width="200"  height="100"/>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,19 +23,33 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="Index">Reservation</a>
+                            <a class="nav-link" asp-area="" asp-controller="Reservations" asp-action="Index">Reservation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sittings" asp-action="Index">Sittings</a>
+                            <a class="nav-link" asp-area="" asp-controller="Sittings" asp-action="Index">Sittings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ReservedTables" asp-action="Index">Reserved Tables</a>
+                            <a class="nav-link" asp-area="" asp-controller="ReservedTables" asp-action="Index">Reserved Tables</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="AllTables" asp-action="Index">Tables</a>
+                        </li>                       
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Areas" asp-action="Index">Areas</a>
                         </li>
                         @if (User.IsInRole("manager"))
                         {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Guests</a>
+                                <div class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 44px);" data-popper-placement="bottom-start">
+                                    <h6 class="dropdown-header">Dropdown header</h6>
+                                    <a class="dropdown-item" asp-controller="Guests" asp-action="Index">Guests List</a>
+                                    <a class="dropdown-item" asp-controller="Guests" asp-action="Create">Create Guest</a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Area</a>
                                 <div class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 44px);" data-popper-placement="bottom-start">
@@ -58,7 +74,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" >
         <div class="container">
             &copy; 2023 - DatabaseReservation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -13,6 +13,12 @@ namespace DatabaseReservation.Service
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
+        /// <summary>
+        /// Constructor for the userservice class to inject services and use them
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="roleManager"></param>
         public UserService(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
@@ -20,6 +26,11 @@ namespace DatabaseReservation.Service
             this.roleManager = roleManager;
             this.signInManager = signInManager;
         }
+        /// <summary>
+        /// login method to allow the user access system and use it
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<Status> LoginAsync(Login model)
         {
             var status = new Status();
@@ -67,6 +78,11 @@ namespace DatabaseReservation.Service
 
             return status;
         }
+        
+        /// <summary>
+        /// Logout method so the user can signout from the system
+        /// </summary>
+        /// <returns></returns>
         public async Task<Status> LogoutAsync()
         {
             var status = new Status();
@@ -75,6 +91,12 @@ namespace DatabaseReservation.Service
             status.Message = "You have logged out successfully";
             return status;
         }
+        
+        /// <summary>
+        /// Register method so that guest can become members and access the system!
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<Status> RegisterAsync(Register model)
         {
             var status = new Status();
@@ -85,6 +107,7 @@ namespace DatabaseReservation.Service
                 status.Message = "User already exist";
                 return status;
             }
+            // creating a user variable to add to the database after
             ApplicationUser user = new()
             {
                 Email = model.Email,
@@ -119,7 +142,12 @@ namespace DatabaseReservation.Service
             status.Message = "You have registered successfully";
             return status;
         }
-
+        /// <summary>
+        /// async method to change the password of a given user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public async Task<Status> ChangePasswordAsync(ChangePassword model, string username)
         {
             var status = new Status();

@@ -136,7 +136,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
         builder.Entity<ApplicationUser>().HasData(
      manager, staff, member
       );
-
+        // seeding the roles in the database to be used late for users
         builder.Entity<IdentityUserRole<string>>().HasData(
              new IdentityUserRole<string>
              {
@@ -172,7 +172,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
                 new Sitting
                 {
                     SittingId = i,
-                    SittingType = "breakfast",
+                    SittingType = "Breakfast",
                     StartDateTime = currentDate,
                     EndDateTime = currentDate.AddMinutes(299),
                     Capacity = 40
@@ -180,7 +180,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
                 new Sitting
                 {
                     SittingId = i + 1,
-                    SittingType = "lunch",
+                    SittingType = "Lunch",
                     StartDateTime = currentDate.AddHours(5),
                     EndDateTime = currentDate.AddMinutes(599),
                     Capacity = 40
@@ -188,7 +188,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
                 new Sitting
                 {
                     SittingId = i + 2,
-                    SittingType = "dinner",
+                    SittingType = "Dinner",
                     StartDateTime = currentDate.AddHours(10),
                     EndDateTime = currentDate.AddMinutes(899),
                     Capacity = 40

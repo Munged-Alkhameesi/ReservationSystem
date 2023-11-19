@@ -20,7 +20,11 @@ namespace DatabaseReservation.Controllers
         {
             _context = context;
         }
-
+        /// <summary>
+        /// the index method with a search feature to find the sitting you need
+        /// </summary>
+        /// <param name="SearchString"></param>
+        /// <returns></returns>
         // GET: Sittings
         public async Task<IActionResult> Index(string SearchString)
         {
@@ -32,6 +36,7 @@ namespace DatabaseReservation.Controllers
             Debug.WriteLine(SearchString);
             if (!String.IsNullOrEmpty(SearchString))
             {
+                // search by description property which is not mapped in the database but is just the sitting type and the start and end date times
                 sits = sits.Where(s => s.Description!.Contains(SearchString)).ToList();
             }
             return View(sits);

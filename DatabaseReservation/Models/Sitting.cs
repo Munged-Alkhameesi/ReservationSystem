@@ -29,6 +29,7 @@ public partial class Sitting
     [InverseProperty("Sitting")]
     public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 
+    // this property is just used for generating an easy descrption to search through and display
     [NotMapped]
     public string Description { get { return SittingType +" " + StartDateTime + " To " + EndDateTime.TimeOfDay; } }
 }

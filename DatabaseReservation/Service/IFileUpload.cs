@@ -2,6 +2,6 @@
 {
     public interface IFileUpload
     {
-        Task<string> UploadFile(IFormFile file, IWebHostEnvironment webHostEnvironment);
+        Task<string> UploadFile(IFormFile file);
     }
 }

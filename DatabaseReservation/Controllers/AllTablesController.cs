@@ -10,94 +10,91 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DatabaseReservation.Controllers
 {
-    public class GuestsController : Controller
+    [Authorize(Roles ="manager,staff")]
+    public class AllTablesController : Controller
     {
         private readonly ReservationDbContext _context;
 
-        public GuestsController(ReservationDbContext context)
+        public AllTablesController(ReservationDbContext context)
         {
             _context = context;
         }
-        [Authorize(Roles = "manager")]
 
-        // GET: Guests
+        // GET: AllTables
         public async Task<IActionResult> Index()
         {
-              return _context.Guests != null ? 
-                          View(await _context.Guests.ToListAsync()) :
-                          Problem("Entity set 'ReservationDbContext.Guests'  is null.");
+            var reservationDbContext = _context.AllTables.Include(a => a.Area);
+            return View(await reservationDbContext.ToListAsync());
         }
 
-        // GET: Guests/Details/5
+        // GET: AllTables/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Guests == null)
+            if (id == null || _context.AllTables == null)
             {
                 return NotFound();
             }
 
-            var guest = await _context.Guests
-                .FirstOrDefaultAsync(m => m.GuestId == id);
-            if (guest == null)
+            var allTable = await _context.AllTables
+                .Include(a => a.Area)
+                .FirstOrDefaultAsync(m => m.TableId == id);
+            if (allTable == null)
             {
                 return NotFound();
             }
 
-            return View(guest);
+            return View(allTable);
         }
-
-        // GET: Guests/Create
+        [Authorize(Roles = "manager")]
+        // GET: AllTables/Create
         public IActionResult Create()
         {
+            ViewData["AreaId"] = new SelectList(_context.Areas, "AreaId", "AreaId");
             return View();
         }
 
-        // POST: Guests/Create
+        // POST: AllTables/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GuestId,GuestFirstName,GuestLastName,GuestEmail,GuestPhoneNumber")] Guest guest)
+        public async Task<IActionResult> Create([Bind("TableId,TableName,AreaId")] AllTable allTable)
         {
-            // if guest exists then no need to recreate it
-            if(_context.Guests.Any(g => g.GuestEmail == guest.GuestEmail))
-                return RedirectToAction("Create", "Reservations", new { id = guest.GuestId });
-            
             if (ModelState.IsValid)
             {
-                _context.Add(guest);
+                _context.Add(allTable);
                 await _context.SaveChangesAsync();
-                // go to reservation and pass the guest id as well
-                return RedirectToAction("Create", "Reservations", new { id = guest.GuestId });
+                return RedirectToAction(nameof(Index));
             }
-            return View(guest);
+            ViewData["AreaId"] = new SelectList(_context.Areas, "AreaId", "AreaId", allTable.AreaId);
+            return View(allTable);
         }
         [Authorize(Roles = "manager")]
-
-        // GET: Guests/Edit/5
+        // GET: AllTables/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Guests == null)
+            if (id == null || _context.AllTables == null)
             {
                 return NotFound();
             }
 
-            var guest = await _context.Guests.FindAsync(id);
-            if (guest == null)
+            var allTable = await _context.AllTables.FindAsync(id);
+            if (allTable == null)
             {
                 return NotFound();
             }
-            return View(guest);
+            ViewData["AreaId"] = new SelectList(_context.Areas, "AreaId", "AreaId", allTable.AreaId);
+            return View(allTable);
         }
 
-        // POST: Guests/Edit/5
+        // POST: AllTables/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GuestId,GuestFirstName,GuestLastName,GuestEmail,GuestPhoneNumber")] Guest guest)
+        public async Task<IActionResult> Edit(int id, [Bind("TableId,TableName,AreaId")] AllTable allTable)
         {
-            if (id != guest.GuestId)
+            if (id != allTable.TableId)
             {
                 return NotFound();
             }
@@ -106,12 +103,12 @@ namespace DatabaseReservation.Controllers
             {
                 try
                 {
-                    _context.Update(guest);
+                    _context.Update(allTable);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GuestExists(guest.GuestId))
+                    if (!AllTableExists(allTable.TableId))
                     {
                         return NotFound();
                     }
@@ -122,54 +119,51 @@ namespace DatabaseReservation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(guest);
+            ViewData["AreaId"] = new SelectList(_context.Areas, "AreaId", "AreaId", allTable.AreaId);
+            return View(allTable);
         }
-        [Authorize(Roles = "admin")]
-
-        // GET: Guests/Delete/5
+        [Authorize(Roles = "manager")]
+        // GET: AllTables/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Guests == null)
+            if (id == null || _context.AllTables == null)
             {
                 return NotFound();
             }
 
-            var guest = await _context.Guests
-                .FirstOrDefaultAsync(m => m.GuestId == id);
-            if (guest == null)
+            var allTable = await _context.AllTables
+                .Include(a => a.Area)
+                .FirstOrDefaultAsync(m => m.TableId == id);
+            if (allTable == null)
             {
                 return NotFound();
             }
 
-            return View(guest);
+            return View(allTable);
         }
 
-        // POST: Guests/Delete/5
+        // POST: AllTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Guests == null)
+            if (_context.AllTables == null)
             {
-                return Problem("Entity set 'ReservationDbContext.Guests'  is null.");
+                return Problem("Entity set 'ReservationDbContext.AllTables'  is null.");
             }
-            var guest = await _context.Guests.FindAsync(id);
-            if (guest != null)
+            var allTable = await _context.AllTables.FindAsync(id);
+            if (allTable != null)
             {
-                _context.Guests.Remove(guest);
+                _context.AllTables.Remove(allTable);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        /// <summary>
-        /// check if a guest exists or not
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private bool GuestExists(int id)
+
+        private bool AllTableExists(int id)
         {
-          return (_context.Guests?.Any(e => e.GuestId == id)).GetValueOrDefault();
+            return (_context.AllTables?.Any(e => e.TableId == id)).GetValueOrDefault();
         }
     }
 }

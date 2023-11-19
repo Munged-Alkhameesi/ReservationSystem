@@ -5,25 +5,6 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
-
-/* Parallax styles */
-.parallax-container {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    position: relative;
-}
-
-.parallax-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-}
 #profile-image {
     width: 32px; /* Adjust the width as needed */
     height: 32px; /* Adjust the height as needed */

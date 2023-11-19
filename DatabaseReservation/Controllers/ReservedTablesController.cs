@@ -49,7 +49,8 @@ namespace DatabaseReservation.Controllers
 
         // GET: ReservedTables/Create
         public IActionResult Create()
-        {
+        {           
+            // send data back to view to autofill fields for the user 
             ViewData["ReservationId"] = new SelectList(_context.Reservations, "ReservationId", "ReservationId");
             ViewData["TableId"] = new SelectList(_context.AllTables, "TableId", "TableId");
             return View();
@@ -67,7 +68,8 @@ namespace DatabaseReservation.Controllers
                 _context.Add(reservedTable);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            }           
+            // send data back to view if the model is not valid so values still appear on the page
             ViewData["ReservationId"] = new SelectList(_context.Reservations, "ReservationId", "ReservationId", reservedTable.ReservationId);
             ViewData["TableId"] = new SelectList(_context.AllTables, "TableId", "TableId", reservedTable.TableId);
             return View(reservedTable);
@@ -86,6 +88,7 @@ namespace DatabaseReservation.Controllers
             {
                 return NotFound();
             }
+            // send data back to view to autofill fields for the user 
             ViewData["ReservationId"] = new SelectList(_context.Reservations, "ReservationId", "ReservationId", reservedTable.ReservationId);
             ViewData["TableId"] = new SelectList(_context.AllTables, "TableId", "TableId", reservedTable.TableId);
             return View(reservedTable);
@@ -123,11 +126,12 @@ namespace DatabaseReservation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            // send data back to view if the model is not valid so values still appear on the page
             ViewData["ReservationId"] = new SelectList(_context.Reservations, "ReservationId", "ReservationId", reservedTable.ReservationId);
             ViewData["TableId"] = new SelectList(_context.AllTables, "TableId", "TableId", reservedTable.TableId);
             return View(reservedTable);
         }
-
+        
         // GET: ReservedTables/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
