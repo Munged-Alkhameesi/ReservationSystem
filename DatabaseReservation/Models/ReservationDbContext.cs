@@ -129,6 +129,7 @@ public partial class ReservationDbContext : IdentityDbContext<ApplicationUser>
             FirstName = "Jason",
             LastName = "Smith",
             EmailConfirmed = true,
+            PhoneNumber = "1234456775",
             PhoneNumberConfirmed = true,
         };
         member.PasswordHash = hasher.HashPassword(member, "member");

@@ -60,8 +60,11 @@ namespace DatabaseReservation.Controllers
         public async Task<IActionResult> Create([Bind("GuestId,GuestFirstName,GuestLastName,GuestEmail,GuestPhoneNumber")] Guest guest)
         {
             // if guest exists then no need to recreate it
-            if(_context.Guests.Any(g => g.GuestEmail == guest.GuestEmail))
-                return RedirectToAction("Create", "Reservations", new { id = guest.GuestId });
+            if (_context.Guests.Any(g => g.GuestEmail == guest.GuestEmail))
+            {
+                var gs = await _context.Guests.FirstAsync(g => g.GuestEmail == guest.GuestEmail);
+                return RedirectToAction("Create", "Reservations", new { id = gs.GuestId });
+            }
             
             if (ModelState.IsValid)
             {

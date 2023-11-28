@@ -29,7 +29,7 @@ public partial class Guest
     public string GuestEmail { get; set; } = null!;
 
     [Column("guestPhoneNumber")]
-    public int GuestPhoneNumber { get; set; }
+    public string GuestPhoneNumber { get; set; } = null!;
 
     [InverseProperty("Guest")]
     public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();

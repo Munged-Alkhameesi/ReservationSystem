@@ -78,13 +78,16 @@ namespace DatabaseReservation.Controllers
                 }
                 else
                 {
-                    Guest guest = new()
+                    Guest guest = new Guest();
+                    guest.GuestEmail = user.Email;
+                    guest.GuestFirstName = user.FirstName;
+                    guest.GuestLastName = user.LastName;
+                    guest.GuestPhoneNumber = user.PhoneNumber;
+                    
+                    if(guest == null)
                     {
-                        GuestEmail = user.Email,
-                        GuestFirstName = user.FirstName,
-                        GuestLastName = user.LastName,
-                        GuestPhoneNumber = int.Parse(user.PhoneNumber),
-                    };
+
+                    }
                     _context.Add(guest);
                     _context.SaveChanges();
                     id = guest.GuestId;
@@ -97,7 +100,6 @@ namespace DatabaseReservation.Controllers
         
             // find the guest with that id
             var gs = _context.Guests.Find(id);
-            
             // send the data to the view
             ViewData["GuestId"] = new SelectList(new[] { gs }, "GuestId", "GuestFirstName");
             ViewData["desc"] = _context.Sittings.FirstOrDefault(sitting => sitting.StartDateTime < DateTime.Now && sitting.EndDateTime > DateTime.Now)?.Description ?? _context.Sittings.ToArray()[0].Description;
